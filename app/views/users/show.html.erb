@@ -1,6 +1,6 @@
 
 <% if @user.id == current_user.id %>
-  <h3>Events I'm hosting:</h3>
+  <h3>Events you're hosting:</h3>
 <% else %>
   <h3>Events <%= @user.name %> is hosting:</h3>
 <% end %>
@@ -10,7 +10,7 @@
     <%= link_to "#{event.description}", event_path %> <br>
 <% end %>
 
-<h1>Upcoming Events: </h1>
+<h1> Your upcoming events: </h1>
 
 <% events =  @upcoming_events.pluck(:description, :event_date) %>
 <% events.each do |x, y| %>
@@ -19,7 +19,7 @@
 <% end %>
 
 
-<h1>Past Events:</h1>
+<h1>Your past events:</h1>
 
 <% events =  @past_events.pluck(:description, :event_date) %>
 <% events.each do |x, y| %>
