@@ -1,7 +1,14 @@
 <h1>My Hosted Events</h1>
 <h2>Host name:</h2>
 <%= @user.name %> <br>
-<h3>Events I'm hosting: </h3>
+
+<% if @user.id == current_user.id %>
+  <h3>Events I'm hosting</h3>
+<% else %>
+  <h3>Events <%= @user.name %> is hosting:</h3>
+<% end %>
+
+
 <% @user.events.each do |event| %>
     <%= event.description %> <br>
 <% end %>
