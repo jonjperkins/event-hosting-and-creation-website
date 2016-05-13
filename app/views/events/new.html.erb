@@ -1,0 +1,16 @@
+<h1>Create an Event</h1> 
+
+<%= form_for(@event) do |f| %>
+    
+    <%= f.label :event_date %>
+	<%= f.date_field :event_date %>
+	
+	<%= f.label :event_time %>
+	<%= f.time_field :event_time %>
+    
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    
+    <%= f.submit "Create", class: "btn btn-primary" %>
+
+<% end %>

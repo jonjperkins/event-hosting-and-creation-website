@@ -1,0 +1,33 @@
+<h1>Event Description</h1>
+
+<%= @event.description %> <br>
+<h3>Host name:</h3>
+<%= @event.host.name %>
+
+
+
+<h4>Event guests:</h4>
+  <% @event.guests.each do |e| %>
+    <%= e.name %>
+  <% end %>
+
+<% if logged_in? && (current_user.id != @event.host.id) %>
+  <% if @event.guests.include?(current_user) %>
+    <%= form_for(current_user.invites.find_by(attended_event_id: @event.id), 
+      :html => { :method => :delete }) do |f| %>
+      <%= f.submit "Leave event", class: "btn btn-danger" %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_user.invites.build(attended_event_id: @event.id)) do |f| %>
+      <%= f.hidden_field :attended_event_id, :value => @event.id %>
+      <%= f.submit "Attend this Event", class: "btn btn-success" %>
+    <% end %>
+  <% end %>
+<% elsif current_user.id == @event.host.id %>
+  <%= link_to "Edit Event", "#", class: "btn btn-primary" %>
+  <%= link_to "Delete Event", "#" %>
+<% end %>
+      
+      
+      
+      

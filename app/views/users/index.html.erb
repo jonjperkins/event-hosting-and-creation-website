@@ -1,0 +1,8 @@
+<h1>Users:</h1>
+<% @users.each do |x| %>
+  <% if logged_in? %>
+    <%= link_to "#{x.name}", user_path(x) %><br>
+  <% else %>
+    <%= link_to "#{x.name}", login_path %><br>
+  <% end %>
+<% end %>

@@ -1,0 +1,24 @@
+<h1>My Hosted Events</h1>
+<h2>Host name:</h2>
+<%= @user.name %> <br>
+<h3>Events I'm hosting: </h3>
+<% @user.events.each do |event| %>
+    <%= event.description %> <br>
+<% end %>
+
+<h1>Upcoming Events: </h1>
+
+<% events =  @upcoming_events.pluck(:description, :event_date) %>
+<% events.each do |x, y| %>
+  <%= x %> <br>
+  <%= y.strftime('%A, %B %d, %Y at %I:%M%P') %> <br><br>
+<% end %>
+
+
+<h1>Past Events:</h1>
+
+<% events =  @past_events.pluck(:description, :event_date) %>
+<% events.each do |x, y| %>
+  <%= x %> <br>
+  <%= y.strftime('%A, %B %d, %Y') %> <br><br>
+<% end %>
