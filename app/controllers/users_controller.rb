@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash.now[:success] = "New user created!"
-      redirect_to user 
+      redirect_to @user 
     else
       flash.now[:danger] = "Try again!"
       render 'new'

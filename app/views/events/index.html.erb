@@ -3,7 +3,7 @@
 <h2>Upcoming events:</h2>
 
 <% @events.upcoming_events.each do |x| %>
-  <%= x.description %><br>
+  <%= link_to "#{x.description}", event_path(x.id) %><br>
   <%= x.event_date.strftime('%A, %B %d, %Y at %I:%M%P') %><br>
 <% end %>
 
