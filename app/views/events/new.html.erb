@@ -1,7 +1,7 @@
 <h1>Create an Event</h1> 
 
 <%= form_for(@event) do |f| %>
-    
+  <div class="col-sm-4 col-sm-offset-4 well">
     <%= f.label :event_date %>
 	<%= f.date_field :event_date %>
 	
@@ -12,5 +12,6 @@
     <%= f.text_field :description %>
     
     <%= f.submit "Create", class: "btn btn-primary" %>
+  </div>
 
 <% end %>

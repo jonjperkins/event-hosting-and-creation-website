@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
     has_many :events, :foreign_key => 'host_id'
     has_many :invites, :foreign_key => 'guest_id'
     has_many :attended_events, :through => :invites
+    
+    has_many :sent_invitations, :foreign_key => :sender_id, :class_name => "Invitation"
+    has_many :received_invitations, :foreign_key => :receiver_id, :class_name => "Invitation"
   
     attr_accessor :remember_token
     before_save { self.email = email.downcase }
@@ -45,6 +48,7 @@ class User < ActiveRecord::Base
     def past_events
       self.attended_events.where("event_date < ?", Date.today)
     end
+  
   
 
 end

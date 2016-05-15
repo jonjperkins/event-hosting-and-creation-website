@@ -3,13 +3,17 @@
 <h2>Upcoming events:</h2>
 
 <% @events.upcoming_events.each do |x| %>
+<div class="col-sm-4 col-sm-offset-4 well">
   <%= link_to "#{x.description}", event_path(x.id) %><br>
   <%= x.event_date.strftime('%A, %B %d, %Y at %I:%M%P') %><br>
 <% end %>
-
+</div>
+<br>
 <h2>Past Events</h2>
 
 <% @events.past_events.each do |x| %>
+  <div class="col-sm-4 col-sm-offset-4 well">
   <%= link_to "#{x.description}", event_path(x.id) %><br>
   <%= x.event_date.strftime('%A, %B %d, %Y') %><br>
+  </div>
 <% end %>

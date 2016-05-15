@@ -1,7 +1,9 @@
 <h1>Log in</h1>
 
+<div class="col-sm-4 col-sm-offset-4 well">
+
 <%= form_for(:session, url: login_path) do |f| %>
-  
+
   <%= f.label :email %>
   <%= f.email_field :email %>
   
@@ -11,10 +13,13 @@
   <%= f.submit "Log in", class: "btn btn-primary" %>
   
   <%= f.label :remember_me, class: "checkbox inline" do %>
+    <br>
       <%= f.check_box :remember_me %>
       <span>Remember me on this computer</span>
   <% end %>
 
 <% end %>
 
+
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+</div>

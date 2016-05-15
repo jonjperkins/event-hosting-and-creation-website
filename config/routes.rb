@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'invitations/create'
+
+  get 'invitations/destroy'
+
   get 'events/new'
 
   get 'events/create'

@@ -1,8 +1,19 @@
 <h1>Users:</h1>
+
 <% @users.each do |x| %>
+  <div class="col-sm-6 col-sm-offset-3 well">
   <% if logged_in? %>
-    <%= link_to "#{x.name}", user_path(x) %><br>
+    <h2><span id=logo><%= link_to "#{x.name}", user_path(x) %></span></h2><br>
+    <h4>Member since <%= x.created_at.strftime('%B %d, %Y') %></h4><br>
+    <h4>Number of events <%= "#{x.name}" %> has created: <%= x.events.count %>.</h4><br>
+    <% if x.events.count > 5 %>
+      <h4><b><%= "#{x.name}" %> is an <em>ALL-STAR</em> host!</b></h4>
+      <h3><span class = "glyphicon glyphicon-star-empty"></span></h3>
+    <% else %>
+      <h4><small><%= "#{x.name}" %> needs to create <%= 5 - (x.events.count) %> more events to become an all-star host.</small></h4>
+    <% end %>
   <% else %>
     <%= link_to "#{x.name}", login_path %><br>
   <% end %>
+</div>
 <% end %>

@@ -1,8 +1,8 @@
 
 <% if @user.id == current_user.id %>
-  <h3>Events you're hosting:</h3>
+  <h3>Events you created:</h3>
 <% else %>
-  <h3>Events <%= @user.name %> is hosting:</h3>
+  <h3>Events <%= @user.name %> created:</h3>
 <% end %>
 
 
@@ -10,16 +10,16 @@
     <%= link_to "#{event.description}", event_path %> <br>
 <% end %>
 
-<h1> Your upcoming events: </h1>
+<h1> Upcoming events: </h1>
 
 <% events =  @upcoming_events.pluck(:description, :event_date) %>
 <% events.each do |x, y| %>
-  <%= link_to "#{x}", event_path  %> <br>
+  <h2><%= link_to "#{x}", event_path  %></h2> <br>
   <%= y.strftime('%A, %B %d, %Y at %I:%M%P') %> <br><br>
 <% end %>
 
 
-<h1>Your past events:</h1>
+<h1>Past events attended:</h1>
 
 <% events =  @past_events.pluck(:description, :event_date) %>
 <% events.each do |x, y| %>
