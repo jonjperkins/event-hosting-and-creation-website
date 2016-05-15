@@ -1,19 +1,37 @@
 <h1>Events</h1>
 
-<h2>Upcoming events:</h2>
+<div class="col-sm-4 col-sm-offset-4">
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#upcoming_events">Upcoming events</a></li>
+    <li><a data-toggle="tab" href="#past_events">Past events</a></li>
+</ul>
 
-<% @events.upcoming_events.each do |x| %>
-<div class="col-sm-4 col-sm-offset-4 well">
-  <%= link_to "#{x.description}", event_path(x.id) %><br>
-  <%= x.event_date.strftime('%A, %B %d, %Y at %I:%M%P') %><br>
-<% end %>
+<div class="tab-content">
+    <div id="upcoming_events" class="tab-pane fade in active">
+        <p><% @events.upcoming_events.each do |x| %>
+          <div class="well">
+            <%= link_to "#{x.description}", event_path(x.id) %><br>
+            <i class="glyphicon glyphicon-time"></i>
+              <%= x.event_date.strftime('%A, %B %d, %Y') %>
+
+          </div>
+        <% end %>
+        </p>
+    </div>
+    <div id="past_events" class="tab-pane fade">
+        <p><% @events.past_events.each do |x| %>
+          <div class="well">
+            <%= link_to "#{x.description}", event_path(x.id) %><br>
+            <i class="glyphicon glyphicon-time"></i>
+            <%= x.event_date.strftime('%A, %B %d, %Y') %><br>
+          </div>
+        <% end %>
+        </p>
+    </div>
 </div>
-<br>
-<h2>Past Events</h2>
+</div>
 
-<% @events.past_events.each do |x| %>
-  <div class="col-sm-4 col-sm-offset-4 well">
-  <%= link_to "#{x.description}", event_path(x.id) %><br>
-  <%= x.event_date.strftime('%A, %B %d, %Y') %><br>
-  </div>
-<% end %>
+
+
+
+

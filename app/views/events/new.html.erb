@@ -2,14 +2,22 @@
 
 <%= form_for(@event) do |f| %>
   <div class="col-sm-4 col-sm-offset-4 well">
-    <%= f.label :event_date %>
-	<%= f.date_field :event_date %>
-	
-	<%= f.label :event_time %>
-	<%= f.time_field :event_time %>
+    
+    <%= f.label :title %>
+    <%= f.text_field :title %>
     
     <%= f.label :description %>
     <%= f.text_field :description %>
+    
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+    
+    <%= f.label :event_date %>
+	  <%= f.date_field :event_date %>
+	
+	  <%= f.label :event_time %>
+	  <%= f.time_field :event_time %>
+    
     
     <%= f.submit "Create", class: "btn btn-primary" %>
   </div>
