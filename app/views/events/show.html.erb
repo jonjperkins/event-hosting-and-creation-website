@@ -1,3 +1,5 @@
+<% provide(:title, "Events") %>
+
 <h1>Event Description</h1>
 
 <div class="col-sm-4 col-sm-offset-4 well">
@@ -14,6 +16,9 @@
 
 
 <h4>Event guests:</h4>
+
+
+
   <% if @event.guests.any? %>
   <% @event.guests.each do |e| %>
     <h3><%= e.name %></h3><br>
@@ -21,24 +26,25 @@
   <% else %>
     <h3>None so far. Be the first and start the trend!</h3>
   <% end %><br>
-
-<% if logged_in? && (current_user.id != @event.host.id) %>
-  <% if @event.guests.include?(current_user) %>
-    <%= form_for(current_user.invites.find_by(attended_event_id: @event.id), 
-      :html => { :method => :delete }) do |f| %>
-      <%= f.submit "Leave event", class: "btn btn-danger btn-sm" %>
+<% if @event.event_date > Date.today %>
+  <% if logged_in? && (current_user.id != @event.host.id) %>
+    <% if @event.guests.include?(current_user) %>
+      <%= form_for(current_user.invites.find_by(attended_event_id: @event.id), 
+        :html => { :method => :delete }) do |f| %>
+        <%= f.submit "Leave event", class: "btn btn-danger btn-sm" %>
+      <% end %>
+    <% else %>
+      <%= form_for(current_user.invites.build(attended_event_id: @event.id)) do |f| %>
+        <%= f.hidden_field :attended_event_id, :value => @event.id %>
+        <%= f.submit "Attend this Event", class: "btn btn-success btn-sm" %>
+      <% end %>
     <% end %>
-  <% else %>
-    <%= form_for(current_user.invites.build(attended_event_id: @event.id)) do |f| %>
-      <%= f.hidden_field :attended_event_id, :value => @event.id %>
-      <%= f.submit "Attend this Event", class: "btn btn-success btn-sm" %>
-    <% end %>
+  <% elsif current_user.id == @event.host.id %>
+    <div class="text-center">
+    <%= link_to "Edit Event", "#", class: "btn btn-primary" %>
+    <%= link_to "Delete Event", "#", class: "btn btn-primary" %>
+    </div>
   <% end %>
-<% elsif current_user.id == @event.host.id %>
-  <div class="text-center">
-  <%= link_to "Edit Event", "#", class: "btn btn-primary" %>
-  <%= link_to "Delete Event", "#", class: "btn btn-primary" %>
-  </div>
 <% end %>
  
 </div>     

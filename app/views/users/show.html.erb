@@ -1,3 +1,4 @@
+<% provide(:title, "Profiles") %>
 
 <% if @user.id == current_user.id %>
   <h1>Your events</h1>
@@ -6,7 +7,7 @@
                                 to become an all-star host!</h2>
   <% else %>
     <h3><span class = "glyphicon glyphicon-star-empty"></span></h3>
-    <h2>Wow, you're an all-star host!</h2>
+    <h2>These are the events you're planning to attend or have already attended.</h2>
   <% end %>
 <% else %>
   <% if @user.events.count < 5 %>

@@ -1,3 +1,5 @@
+<% provide(:title, "Event list") %>
+
 <h1>Events</h1>
 
 <div class="col-sm-4 col-sm-offset-4">
@@ -21,6 +23,7 @@
           </div>
         <% end %>
         </p>
+        <%= will_paginate @events.upcoming_events %>
     </div>
     <div id="past_events" class="tab-pane fade">
         <p><% @events.past_events.each do |x| %>
@@ -33,9 +36,13 @@
           </div>
         <% end %>
         </p>
+        <%= will_paginate @events.past_events %>
     </div>
     
 </div>
+
+
+
 </div>
 
 
