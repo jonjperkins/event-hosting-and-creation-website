@@ -6,13 +6,13 @@
                                 to become an all-star host!</h2>
   <% else %>
     <h3><span class = "glyphicon glyphicon-star-empty"></span></h3>
-    <h2>Wow, you're an all-star host. Keep hooooostin' ooooon!</h2>
+    <h2>Wow, you're an all-star host!</h2>
   <% end %>
 <% else %>
   <% if @user.events.count < 5 %>
-    <h3>Events <%= @user.name %> created:</h3>
+    <h1> <%= @user.name %>'s events. </h1>
   <% else %>
-    <h3>Events <%= @user.name %> created:</h3>
+    <h1> <%= @user.name %>'s events.</h1>
     <h3><%= @user.name %> is an all star host!</h3>
   <% end %>
 <% end %>
@@ -25,34 +25,38 @@
 </ul>
 
 <div class="tab-content">
-    <div id="upcoming_events" class="tab-pane fade in active">
-      <% events =  @upcoming_events.pluck(:description, :event_date) %>
-      <p><% @user.events.each do |event| %>
-        <div class="well">
-          <%= link_to "#{event.title}", event_path %> <br>
-          <%= event.description %><br>
-          <i class="glyphicon glyphicon-time"></i>
-          <%= event.event_date.strftime('%A, %B %d, %Y') %><br>
-          <i class="glyphicon glyphicon-map-marker"></i>
-          <%= event.location %>
-        </div>
-      <% end %>
+     <div id="upcoming_events" class="tab-pane fade in active">
+       <% if @upcoming_events.none? %>
+       <br>
+        <h3>No upcoming events! Click <%= link_to "here", event_index_path %>
+            to find an event to attend! Just imagine it's 1999 and party 
+            accordingly. Party on, Wayne/Garth.</h3>
+       <% end %>
+       <p><% @upcoming_events.pluck(:title, :id).each do |x, y| %>
+          <div class="well">
+            <b>Event: </b> <%= x %> <br>
+            <%= link_to "Click here for more details", event_path(y) %>
+          </div>
+          <% end %>
+           
         </p>
     </div>
+        
     <div id="past_events" class="tab-pane fade">
-      <% events =  @past_events.pluck(:description, :event_date) %>
-      <% events.each do |event| %>
-        <div class="well">
-          <%= link_to "#{event.title}", event_path  %> <br>
-          <%= event.description %>
-          <i class="glyphicon glyphicon-time"></i>
-          <%= y.strftime('%A, %B %d, %Y') %> <br><br>
-          <i class="glyphicon glyphicon-map-marker"></i>
-          <%= event.location %>
-        </div>
-        <% end %>
+      <div id="upcoming_events" class="tab-pane fade in active">
+       <p><% @past_events.pluck(:title, :id).each do |x, y| %>
+          <div class="well">
+            <b>Event: </b> <%= x %>  <br>
+            <%= link_to "Click here for more details", event_path(y) %><br>
+          </div>
+          <% end %>
+        
+              
+          </div>
+          
+           
         </p>
     </div>
-
+</div>
 
 
