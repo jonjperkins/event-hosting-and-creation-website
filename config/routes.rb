@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
-  get 'invitations/create'
+  get 'static_pages/home'
 
-  get 'invitations/destroy'
+  get 'static_pages/about'
 
   get 'events/new'
 
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get     'create_event'  => 'events#new'
   post    'create_event'  => 'events#create'
   get     'event_index'   => 'events#index'
-  root                       'sessions#new'
+  root                       'static_pages#home'
   
  
   resources :users

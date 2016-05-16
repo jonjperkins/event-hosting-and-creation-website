@@ -13,7 +13,7 @@ class EventsController < ApplicationController
       redirect_to @event
     else
       flash.now[:danger] = "Event not created, some information needed."
-      render create_event_path
+      render 'new'
     end
   end
   
@@ -28,6 +28,7 @@ class EventsController < ApplicationController
   private
   
     def event_params
-      params.require(:event).permit(:event_date, :description, :event_time)
+      params.require(:event).permit(:event_date, :description, :event_time,
+                                    :location, :title)
     end
 end

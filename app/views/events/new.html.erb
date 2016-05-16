@@ -2,21 +2,23 @@
 
 <%= form_for(@event) do |f| %>
   <div class="col-sm-4 col-sm-offset-4 well">
+  <%= render 'shared/event_error_messages' %><br>
+  
     
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control' %>
     
     <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, class: 'form-control' %>
     
     <%= f.label :location %>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, class: 'form-control' %>
     
     <%= f.label :event_date %>
-	  <%= f.date_field :event_date %>
+	  <%= f.date_field :event_date, class: 'form-control' %>
 	
 	  <%= f.label :event_time %>
-	  <%= f.time_field :event_time %>
+	  <%= f.time_field :event_time, class: 'form-control' %>
     
     
     <%= f.submit "Create", class: "btn btn-primary" %>

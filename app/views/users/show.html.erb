@@ -1,28 +1,58 @@
 
 <% if @user.id == current_user.id %>
-  <h3>Events you created:</h3>
+  <h1>Your events</h1>
+  <% if current_user.events.count < 5 %>
+  <h2>You only need to host <%= 5 - (current_user.events.count) %> more events 
+                                to become an all-star host!</h2>
+  <% else %>
+    <h3><span class = "glyphicon glyphicon-star-empty"></span></h3>
+    <h2>Wow, you're an all-star host. Keep hooooostin' ooooon!</h2>
+  <% end %>
 <% else %>
-  <h3>Events <%= @user.name %> created:</h3>
+  <% if @user.events.count < 5 %>
+    <h3>Events <%= @user.name %> created:</h3>
+  <% else %>
+    <h3>Events <%= @user.name %> created:</h3>
+    <h3><%= @user.name %> is an all star host!</h3>
+  <% end %>
 <% end %>
 
+<div class="col-sm-4 col-sm-offset-4">
+<ul class="nav nav-tabs text-centered">
+    <li class="active"><a data-toggle="tab" href="#upcoming_events">Upcoming 
+                                            events</a></li>
+    <li><a data-toggle="tab" href="#past_events">Past events</a></li>
+</ul>
 
-<% @user.events.each do |event| %>
-    <%= link_to "#{event.description}", event_path %> <br>
-<% end %>
+<div class="tab-content">
+    <div id="upcoming_events" class="tab-pane fade in active">
+      <% events =  @upcoming_events.pluck(:description, :event_date) %>
+      <p><% @user.events.each do |event| %>
+        <div class="well">
+          <%= link_to "#{event.title}", event_path %> <br>
+          <%= event.description %><br>
+          <i class="glyphicon glyphicon-time"></i>
+          <%= event.event_date.strftime('%A, %B %d, %Y') %><br>
+          <i class="glyphicon glyphicon-map-marker"></i>
+          <%= event.location %>
+        </div>
+      <% end %>
+        </p>
+    </div>
+    <div id="past_events" class="tab-pane fade">
+      <% events =  @past_events.pluck(:description, :event_date) %>
+      <% events.each do |event| %>
+        <div class="well">
+          <%= link_to "#{event.title}", event_path  %> <br>
+          <%= event.description %>
+          <i class="glyphicon glyphicon-time"></i>
+          <%= y.strftime('%A, %B %d, %Y') %> <br><br>
+          <i class="glyphicon glyphicon-map-marker"></i>
+          <%= event.location %>
+        </div>
+        <% end %>
+        </p>
+    </div>
 
-<h1> Upcoming events: </h1>
-
-<% events =  @upcoming_events.pluck(:description, :event_date) %>
-<% events.each do |x, y| %>
-  <h2><%= link_to "#{x}", event_path  %></h2> <br>
-  <%= y.strftime('%A, %B %d, %Y at %I:%M%P') %> <br><br>
-<% end %>
 
 
-<h1>Past events attended:</h1>
-
-<% events =  @past_events.pluck(:description, :event_date) %>
-<% events.each do |x, y| %>
-  <%= link_to "#{x}", event_path  %> <br>
-  <%= y.strftime('%A, %B %d, %Y') %> <br><br>
-<% end %>

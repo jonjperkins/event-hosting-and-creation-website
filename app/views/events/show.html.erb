@@ -2,16 +2,24 @@
 
 <div class="col-sm-4 col-sm-offset-4 well">
 
-<%= @event.description %> <br>
-<h3>Host name:</h3>
-<%= @event.host.name %>
+<h4><b><%= @event.title %></b></h4>
+<h3><%= @event.description %></h3><br>
+<h4>Hosted by:</h4>
+<h3><%= @event.host.name %></h3><br>
+<h4>Location:</h4>
+<h3><%= @event.location %></h3><br>
+
 
 
 
 <h4>Event guests:</h4>
+  <% if @event.guests.any? %>
   <% @event.guests.each do |e| %>
-    <%= e.name %>
+    <h3><%= e.name %></h3><br>
   <% end %>
+  <% else %>
+    <h3>None so far. Be the first and start the trend!</h3>
+  <% end %><br>
 
 <% if logged_in? && (current_user.id != @event.host.id) %>
   <% if @event.guests.include?(current_user) %>
@@ -26,8 +34,10 @@
     <% end %>
   <% end %>
 <% elsif current_user.id == @event.host.id %>
+  <div class="text-center">
   <%= link_to "Edit Event", "#", class: "btn btn-primary" %>
-  <%= link_to "Delete Event", "#" %>
+  <%= link_to "Delete Event", "#", class: "btn btn-primary" %>
+  </div>
 <% end %>
  
 </div>     

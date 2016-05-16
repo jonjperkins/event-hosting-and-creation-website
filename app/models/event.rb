@@ -7,9 +7,9 @@ class Event < ActiveRecord::Base
     scope :upcoming_events, -> { where("event_date >= ?", Date.today) }
     scope :past_events, -> { where("event_date < ?", Date.today) }
   
-    validates :title, presence: true, length: { maximum: 30 }
-    validates :description, presence: true, length: { maximum: 50 }
-    validates :location, presence: true, length: { maximum: 20 }
+    validates :title, presence: true, length: { maximum: 40 }
+    validates :description, presence: true, length: { maximum: 200 }
+    validates :location, presence: true, length: { maximum: 40 }
     validates :event_date, presence: true
     validates :event_time, presence: true
     
