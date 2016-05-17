@@ -2,6 +2,9 @@
 
 <h1>Events</h1>
 
+<h3> <%= link_to "Create a new event", create_event_path, 
+           class: "btn btn-primary" %></h3><br><br>
+
 <div class="col-sm-4 col-sm-offset-4">
 <ul class="nav nav-tabs text-centered">
     <li class="active"><a data-toggle="tab" href="#upcoming_events">Upcoming events</a></li>
@@ -14,11 +17,13 @@
           <div class="well">
             <%= link_to "#{x.title}", event_path(x.id) %><br>
             <%= "#{x.description}" %><br>
-            <i class="glyphicon glyphicon-time"></i>
+            <i class="glyphicon glyphicon-calendar"></i>
               <%= x.event_date.strftime('%A, %B %d, %Y') %><br>
+            <i class="glyphicon glyphicon-time"></i>    
+              <%=x.event_time.strftime('%I:%M%P') %><br>
             <i class="glyphicon glyphicon-map-marker"></i>
               <%= x.location %><br>
-            <small>Hosted by <%= link_to "#{x.host.name}", user_path(x) %></small>
+            <small>Hosted by <%= link_to "#{x.host.name}", user_path(x.host.id) %></small>
               
           </div>
         <% end %>
@@ -29,10 +34,12 @@
         <p><% @events.past_events.each do |x| %>
           <div class="well">
             <%= link_to "#{x.description}", event_path(x.id) %><br>
-            <i class="glyphicon glyphicon-time"></i>
+            <i class="glyphicon glyphicon-calendar"></i>
               <%= x.event_date.strftime('%A, %B %d, %Y') %><br>
             <i class="glyphicon glyphicon-map-marker"></i>
-              <%= x.location %>
+              <%= x.location %><br>
+            <i class="glyphicon glyphicon-ok"></i>
+               <small>This event has ended.</small>
           </div>
         <% end %>
         </p>

@@ -10,20 +10,23 @@
     <h2>These are the events you're planning to attend or have already attended.</h2>
   <% end %>
 <% else %>
-  <% if @user.events.count < 5 %>
+  <% if @user.events.count <= 5 %>
     <h1> <%= @user.name %>'s events. </h1>
   <% else %>
-    <h1> <%= @user.name %>'s events.</h1>
-    <h3><%= @user.name %> is an all star host!</h3>
+    <h1> <%= @user.name %>'s events. </h1>
+    <h3><span class = "glyphicon glyphicon-star-empty"></span></h3>
+    <h2>These are the events <%= @user.name %> is planning to attend or has already attended.</h2>
   <% end %>
 <% end %>
 
 <div class="col-sm-4 col-sm-offset-4">
-<ul class="nav nav-tabs text-centered">
+  <h3> <%= link_to "Create a new event", create_event_path, 
+           class: "btn btn-primary" %></h3><br><br>
+  <ul class="nav nav-tabs text-centered">
     <li class="active"><a data-toggle="tab" href="#upcoming_events">Upcoming 
                                             events</a></li>
     <li><a data-toggle="tab" href="#past_events">Past events</a></li>
-</ul>
+  </ul>
 
 <div class="tab-content">
      <div id="upcoming_events" class="tab-pane fade in active">
@@ -58,6 +61,12 @@
            
         </p>
     </div>
+    
+  <% if current_user.admin? && !current_user?(@user) %>
+    <%= link_to "Delete user", @user, method: :delete,
+                                  data: { confirm: "Are you sure you want to delete this user?" } %>
+  <% end %>
+    
 </div>
 
 

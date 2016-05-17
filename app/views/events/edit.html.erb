@@ -1,8 +1,10 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+<h1>Update your event</h1>
+
+<div class="col-sm-4 col-sm-offset-4 well">
 
 <%= form_for(@event) do |f| %>
-  <div class="col-sm-4 col-sm-offset-4 well" ></div>
+
     <% render 'shared/event_error_messages' %>
   
     <%= f.label :title %>
@@ -21,5 +23,8 @@
     <%= f.time_field :event_time, class: 'form-control' %>
     
     <%= f.submit "Save changes", class: "btn btn-primary" %>
-  </div>
+ 
+<% end %>
+
+ </div>
 

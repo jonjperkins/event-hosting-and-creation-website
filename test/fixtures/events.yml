@@ -1,11 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+halloween:
+  title: Ghoulish Party
+  description: Do not forget your costume!
+  location: Graveyard
+  event_date: 2015-04-21
+  event_time: 2015-04-21 09:40:38
+  host_id: 1
+  
+  

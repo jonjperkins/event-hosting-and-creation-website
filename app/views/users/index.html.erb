@@ -8,8 +8,8 @@
   <div class="col-sm-6 col-sm-offset-3 well">
   <% if logged_in? %>
     <h2><span id=logo><%= link_to "#{x.name}", user_path(x) %></span></h2>
-    Member since <%= x.created_at.strftime('%B %d, %Y') %><br>
-    <small>Number of events <%= "#{x.name}" %> has created: <%= x.events.count %>.</small><br>
+    <small>Member since <%= x.created_at.strftime('%B %d, %Y') %></small><br>
+    <small>Number of events <%= "#{x.name}" %> has created: <%= x.events.count %></small><br>
     <% if x.events.count >= 5 %>
       <span class = "glyphicon glyphicon-star-empty"></span>
       <b><%= "#{x.name}" %> is an <em>ALL-STAR</em> host!</b>
