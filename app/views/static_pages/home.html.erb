@@ -9,12 +9,12 @@
   </div>
 <% else %>
   <%= render 'static_pages/home' %>
-    <div class="col-sm-4 col-sm-offset-4">
+    <div class="col-sm-4 col-sm-offset-4 text-center">
     <h1>Welcome to the Private Events site!</h1>
-      <h3>Feel free to <%= link_to "sign up", signup_path %> for a new account,
-                                       or <%= link_to "log in", login_path %>
-                                       with these credentials: foo@bar.com 
-                                       password:foobar.</h3>
+    <%= link_to "Sign up", signup_path, class: "btn btn-primary" %>
+    <%= link_to "Log in", login_path, class: "btn btn-primary" %>
+      <h3>Feel free to sign up for a new account or login with these 
+          credentials: foo@bar.com password:foobar.</h3>
     </div>
     
     
