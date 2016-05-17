@@ -7,6 +7,6 @@ separate tabs for upcoming and past events on the user/show and events/index pag
 and a few other outputs born from the fires of active record asssociations and 
 relations! 
 
-Feel free to use foo@bar.com (password: foobar) to log in and demo the app. 
+Feel free to use "foo@bar.com" (password: foobar) to log in and demo the app. 
 
-The app can be accessed on heroku at this address: <a href="http://www.quora.com/Adam-DAngelo">Private Events App</a>
+The app can be accessed on heroku at this address: <a href="https://obscure-earth-39557.herokuapp.com">Private Events App</a>
