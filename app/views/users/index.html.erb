@@ -8,13 +8,14 @@
   <div class="col-sm-6 col-sm-offset-3 well">
   <% if logged_in? %>
     <h2><span id=logo><%= link_to "#{x.name}", user_path(x) %></span></h2>
-    <h3>Member since <%= x.created_at.strftime('%B %d, %Y') %></h3>
-    <h4><small>Number of events <%= "#{x.name}" %> has created: <%= x.events.count %>.</small></h3>
+    Member since <%= x.created_at.strftime('%B %d, %Y') %><br>
+    <small>Number of events <%= "#{x.name}" %> has created: <%= x.events.count %>.</small><br>
     <% if x.events.count >= 5 %>
-      <h4><b><%= "#{x.name}" %> is an <em>ALL-STAR</em> host!</b></h4>
-      <h3><span class = "glyphicon glyphicon-star-empty"></span></h3>
+      <span class = "glyphicon glyphicon-star-empty"></span>
+      <b><%= "#{x.name}" %> is an <em>ALL-STAR</em> host!</b>
+      
     <% else %>
-      <h4><small><%= "#{x.name}" %> needs to create <%= 5 - (x.events.count) %> more events to become an all-star host.</small></h4>
+      <small><%= "#{x.name}" %> needs to create <%= 5 - (x.events.count) %> more events to become an all-star host.</small>
     <% end %>
   <% else %>
     <%= link_to "#{x.name}", login_path %><br>
