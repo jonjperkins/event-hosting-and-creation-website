@@ -9,4 +9,4 @@ relations!
 
 Feel free to use foo@bar.com (password: foobar) to log in and demo the app. 
 
-The app can be accessed on heroku here: obscure-earth-39557.herokuapp.com
+The app can be accessed on heroku at this address: https://www.obscure-earth-39557.herokuapp.com
