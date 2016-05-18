@@ -7,7 +7,14 @@ class EventsEditTest < ActionDispatch::IntegrationTest
     @user = users(:jon)
   end
   
-  test "unsuccessful edit" do 
+  test "unsuccessful edit" do
+    get login_path
+    assert_template 'sessions/new'
+    post login_path, session: { email: @user.email, password: 'password' }
+    assert_redirected_to @user
+    follow_redirect!
+    assert_template 'users/show'
+    assert is_logged_in?
     get edit_event_path(@event)
     assert_template 'events/edit'
     patch event_path(@event), event: {title: "", description: "", location: "",
@@ -16,8 +23,13 @@ class EventsEditTest < ActionDispatch::IntegrationTest
   end
   
   test "successful edit" do 
-    get edit_event_path(@event)
-    assert_template 'events/edit'
+    get login_path
+    assert_template 'sessions/new'
+    post login_path, session: { email: @user.email, password: 'password' }
+    assert_redirected_to @user
+    follow_redirect!
+    assert_template 'users/show'
+    assert is_logged_in?
     patch event_path(@event), event: { title: "Ghoulish Party", description: "Do not forget your costume!", location: "The Crypt",
                                       event_date: "2015-04-22", event_time: "2015-04-22 09:40:38", host_id: "1" }
     assert_not flash.empty?

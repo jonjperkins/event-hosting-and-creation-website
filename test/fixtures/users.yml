@@ -1,7 +1,7 @@
 jon:
   name: jon
-  email: jonny@email.combination
-  password: password
-  password_connfirmation: password
+  email: jonny@email.com
+  password_digest: <%= User.digest('password') %>
+  id: 1
   
   
