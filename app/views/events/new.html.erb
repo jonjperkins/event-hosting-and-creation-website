@@ -4,7 +4,7 @@
 
 <%= form_for(@event) do |f| %>
   <div class="col-sm-4 col-sm-offset-4 well">
-  <%= render 'shared/event_error_messages' %><br>
+    <%= render 'shared/event_error_messages' %><br>
   
     
     <%= f.label :title %>
@@ -24,6 +24,7 @@
     
     
     <%= f.submit "Create", class: "btn btn-primary" %>
+  
   </div>
 
 <% end %>
