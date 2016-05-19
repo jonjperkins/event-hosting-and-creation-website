@@ -68,7 +68,7 @@
     <% if @hosted_events.none? %>
       <br>
       <h3>No hosted events! Click <%= link_to "here", create_event_path %>
-            to find an event to attend! You could be the host(ess) with the most(est).</h3>
+            to create an event! You could be the host(ess) with the most(est).</h3>
     <% else %>
       <p><% @hosted_events.each do |x| %>
         <div class="well">
