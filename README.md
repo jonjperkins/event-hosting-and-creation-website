@@ -1,10 +1,10 @@
 This web application allows people to sign up for a site that hosts a collection
-of events. Users must login to access the site's features. Once inside, their 
-profile page will display upcoming events they are attending, past events they 
-have attended, and all of their hosted events. 
+of events. Users must login to access the site's features. Once inside, a users 
+profile page will display upcoming events he/she will be attending, past events 
+he/she has attended, and all of his/her hosted events. 
 
 Users can earn all-star status by hosting 5 or more events. This status is 
-denoted on their profile, and the user index. 
+denoted on the users profile, and in the user's listing in the user index. 
 
 A few integration tests have been written to ensure only admins can delete
 users among other things. 
