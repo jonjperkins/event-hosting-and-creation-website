@@ -5,22 +5,26 @@
 <%= will_paginate @users %>
 
 <% @users.each do |x| %>
+
   <div class="col-sm-6 col-sm-offset-3 well">
-  <% if logged_in? %>
-    <h2><span id=logo><%= link_to "#{x.name}", user_path(x) %></span></h2>
-    <small>Member since <%= x.created_at.strftime('%B %d, %Y') %></small><br>
-    <small>Number of events <%= "#{x.name}" %> has created: <%= x.events.count %></small><br>
-    <% if x.events.count >= 5 %>
-      <span class = "glyphicon glyphicon-star-empty"></span>
-      <b><%= "#{x.name}" %> is an <em>ALL-STAR</em> host!</b>
+    <% if logged_in? %>
+      <h2><span id=logo><%= link_to "#{x.name}", user_path(x) %></span></h2>
+      <small>Member since <%= x.created_at.strftime('%B %d, %Y') %></small><br>
+      <small>Number of events <%= "#{x.name}" %> has created: <%= x.events.count %></small><br>
+      
+      <% if x.events.count >= 5 %>
+        <span class = "glyphicon glyphicon-star-empty"></span>
+        <b><%= "#{x.name}" %> is an <em>ALL-STAR</em> host!</b>
+      <% else %>
+        <small><%= "#{x.name}" %> needs to create <%= 5 - (x.events.count) %> more events to become an all-star host.</small>
+      <% end %>
       
     <% else %>
-      <small><%= "#{x.name}" %> needs to create <%= 5 - (x.events.count) %> more events to become an all-star host.</small>
+      <%= link_to "#{x.name}", login_path %><br>
     <% end %>
-  <% else %>
-    <%= link_to "#{x.name}", login_path %><br>
-  <% end %>
-</div>
+    
+  </div>
+
 <% end %>
 
 <%= will_paginate @users %>
