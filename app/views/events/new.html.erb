@@ -5,6 +5,8 @@
 <%= form_for(@event) do |f| %>
   <div class="col-sm-4 col-sm-offset-4 well">
 
+    <%= render 'shared/event_error_messages' %>
+
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
     

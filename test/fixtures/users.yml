@@ -3,5 +3,13 @@ jon:
   email: jonny@email.com
   password_digest: <%= User.digest('password') %>
   id: 1
+  admin: true
+  
+harry:
+  name: harry
+  email: harry@email.com
+  password_digest: <%= User.digest('password') %>
+  id: 2
+  admin: false
   
   
