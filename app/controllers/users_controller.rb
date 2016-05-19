@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @upcoming_events = @user.upcoming_events
     @past_events = @user.past_events
+    @hosted_events = @user.events
   end
   
   def index

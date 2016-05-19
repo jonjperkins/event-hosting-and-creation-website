@@ -32,6 +32,7 @@
     <li class="active"><a data-toggle="tab" href="#upcoming_events">Upcoming 
                                             events</a></li>
     <li><a data-toggle="tab" href="#past_events">Past events</a></li>
+    <li><a data-toggle="tab" href="#hosted_events">Hosted events</a></li>
   </ul>
 
 <div class="tab-content">
@@ -67,6 +68,22 @@
       <%= link_to "Delete user", @user, method: :delete,
                                   data: { confirm: "Are you sure you want to delete this user?" } %>
     <% end %>
+    
+  <div id="hosted_events" class="tab-pane fade in active">
+    <% if @hosted_events.none? %>
+      <br>
+      <h3>No hosted events! Click <%= link_to "here", create_event_path %>
+            to find an event to attend! You could be the host(ess) with the most(est).</h3>
+    <% end %>
+      <p><% @hosted_events.each do |x| %>
+        <div class="well">
+          <b>Event: </b><%= x.title %><br>
+          <%= link_to "Click here for more details", event_path(x.id) %>
+        </div>
+      <% end %>
+           
+      </p>
+  </div>  
     
 </div>
 
