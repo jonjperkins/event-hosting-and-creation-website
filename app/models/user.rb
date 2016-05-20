@@ -3,9 +3,6 @@ class User < ActiveRecord::Base
     has_many :events, :foreign_key => 'host_id', dependent: :destroy
     has_many :invites, :foreign_key => 'guest_id', dependent: :destroy
     has_many :attended_events, :through => :invites, dependent: :destroy
-    
-    has_many :sent_invitations, :foreign_key => :sender_id, :class_name => "Invitation"
-    has_many :received_invitations, :foreign_key => :receiver_id, :class_name => "Invitation"
   
     attr_accessor :remember_token
     before_save { self.email = email.downcase }
