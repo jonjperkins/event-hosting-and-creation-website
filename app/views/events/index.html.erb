@@ -32,7 +32,8 @@
     <div id="past_events" class="tab-pane fade">
         <p><% @events.past_events.each do |x| %>
           <div class="well">
-            <%= link_to "#{x.description}", event_path(x.id) %><br>
+            <%= link_to "#{x.title}", event_path(x.id) %><br>
+            <%= "#{x.description}" %><br>
             <i class="glyphicon glyphicon-calendar"></i>
               <%= x.event_date.strftime('%A, %B %d, %Y') %><br>
             <i class="glyphicon glyphicon-map-marker"></i>
