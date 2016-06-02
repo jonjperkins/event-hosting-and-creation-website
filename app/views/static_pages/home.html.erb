@@ -11,20 +11,15 @@
 </div>
 
 <% if logged_in? %>
-  <div class="well">
   <div class="col-sm-4 col-sm-offset-4 text-center">
-    <h2>Welcome back! Click one of the links below to see what's going on. </h2>
-    <%= link_to "All events", event_index_path, class: "btn btn-primary" %>
-    <%= link_to "My events", user_path(current_user), class: "btn btn-primary" %>
-  </div>
+    <%= link_to "All events", event_index_path, class: "btn btn-info" %>
+    <%= link_to "My events", user_path(current_user), class: "btn btn-info" %>
   </div>
 <% else %>
   <div class="col-sm-4 col-sm-offset-4 text-center">
     <%= link_to "Sign up", signup_path, class: "btn btn-info" %>
     <%= link_to "Log in", login_path, class: "btn btn-info" %>
-    </div>
+  </div>
 <% end %>
-
-
 </body>
 
