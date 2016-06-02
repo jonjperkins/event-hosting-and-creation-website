@@ -1,26 +1,30 @@
 <% provide(:title, "Home") %>
 
+<body background="http://cdn.pcwallart.com/images/san-francisco-night-wallpaper-wallpaper-4.jpg">
+
+<div class="col-sm-6 col-sm-offset-3 text-center">
+  <div class="well">
+    <h1>Welcome to EventHost!</h1>
+    <h2>At EventHost you can create gatherings for friends, family, and colleagues.
+        With just a few simple steps, you're ready to start hosting!</h2>
+  </div>
+</div>
+
 <% if logged_in? %>
-  <%= render 'static_pages/home' %>
+  <div class="well">
   <div class="col-sm-4 col-sm-offset-4 text-center">
-    <h1>Welcome back!</h1>
+    <h2>Welcome back! Click one of the links below to see what's going on. </h2>
     <%= link_to "All events", event_index_path, class: "btn btn-primary" %>
     <%= link_to "My events", user_path(current_user), class: "btn btn-primary" %>
   </div>
+  </div>
 <% else %>
-  <%= render 'static_pages/home' %>
-    <div class="col-sm-4 col-sm-offset-4 text-center">
-    <h1>Welcome to the Private Events site!</h1>
-    <%= link_to "Sign up", signup_path, class: "btn btn-primary" %>
-    <%= link_to "Log in", login_path, class: "btn btn-primary" %>
-      <h3>Feel free to sign up for a new account or login with these 
-          credentials: foo@bar.com password:foobar.</h3>
+  <div class="col-sm-4 col-sm-offset-4 text-center">
+    <%= link_to "Sign up", signup_path, class: "btn btn-info" %>
+    <%= link_to "Log in", login_path, class: "btn btn-info" %>
     </div>
-    
-    
-    
 <% end %>
 
 
-
+</body>
 
