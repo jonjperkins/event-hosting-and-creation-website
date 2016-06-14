@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'jquery-turbolinks'
 gem 'pg', '~> 0.18.2'
 gem 'rails',                   '4.2.2'
 gem 'bcrypt',                  '3.1.7'

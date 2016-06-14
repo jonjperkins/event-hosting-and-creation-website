@@ -1,6 +1,6 @@
 <% provide(:title, "Log in") %>
 
-<h1>Log in</h1>
+<h1 id="login">Log in</h1>
 
 <%= form_for(:session, url: login_path) do |f| %>
   <div class="col-sm-4 col-sm-offset-4 well">
@@ -24,7 +24,7 @@
 <% end %>
 
 
-<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+<p id="new-user">New user? <%= link_to "Sign up now!", signup_path %></p>
 
   </div>
 </div>
