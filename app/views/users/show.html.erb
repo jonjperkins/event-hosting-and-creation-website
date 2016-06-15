@@ -8,8 +8,7 @@
     <h2>You only need to host <%= 5 - (current_user.events.count) %> more events 
                                 to become an all-star host!</h2>
   <% else %>
-    <h3><span class = "glyphicon glyphicon-star-empty"></span></h3>
-    <h2>These are the events you're planning to attend or have already attended.</h2>
+    
   <% end %>
 
 <% else %>
@@ -23,13 +22,9 @@
   <% end %>
   
 <% end %>
-
-
-<h4> <%= link_to "Create event", create_event_path, 
-           class: "btn btn-primary" %> <%= link_to "See all events", event_index_path, class: "btn btn-primary" %></h4><br><br>
   
 <div class="col-md-6 col-md-offset-3">           
-  <ul class="nav nav-tabs text-centered">
+  <ul class="nav nav-pills nav-justified">
     <li class="active"><a data-toggle="tab" href="#upcoming_events">Upcoming 
                                             events</a></li>
     <li><a data-toggle="tab" href="#past_events">Past events</a></li>
