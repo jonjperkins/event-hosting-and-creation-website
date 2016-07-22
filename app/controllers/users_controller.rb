@@ -18,6 +18,20 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+  
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+  
+  def update
+    @user = User.find_by(id: params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "User updated!"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
 
   def show
     @user = User.find_by(id: params[:id])
@@ -46,4 +60,8 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user.admin?
     end
     
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless @user.id == current_user.id
+    end
 end
