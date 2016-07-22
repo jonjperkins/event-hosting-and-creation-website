@@ -2,81 +2,80 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
       <% if @user.id == current_user.id %>
         <h1>Your events</h1>
-      <% if current_user.events.count < 5 %>
-        <h2>You only need to host <%= 5 - (current_user.events.count) %> more events 
+        <% if current_user.events.count < 5 %>
+          <h2>You only need to host <%= 5 - (current_user.events.count) %> more events 
                                            to become an all-star host!</h2>
-      <% end %>
-    <% else %>
-      <% if @user.events.count <= 5 %>
-        <h1> <%= @user.name %>'s events. </h1>
+        <% end %>
       <% else %>
-        <h1> <%= @user.name %>'s events. </h1>
-        <h3><span class = "glyphicon glyphicon-star-empty"></span></h3>
-        <h2>These are the events <%= @user.name %> is planning to attend or has already attended.</h2>
+        <% if @user.events.count <= 5 %>
+          <h1> <%= @user.name %>'s events. </h1>
+        <% else %>
+          <h1> <%= @user.name %>'s events. </h1>
+          <h3><span class = "glyphicon glyphicon-star-empty"></span></h3>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-</div>
-<div class="col-xs-10 col-xs-offset-1">           
-  <ul class="nav nav-pills nav-justified">
-    <li class="active"><a data-toggle="tab" href="#upcoming_events">Upcoming 
-                                            events</a></li>
-    <li><a data-toggle="tab" href="#past_events">Past events</a></li>
-    <li><a data-toggle="tab" href="#hosted_events">Hosted events</a></li>
-  </ul>
-
-<div class="tab-content">
-  <div id="upcoming_events" class="tab-pane fade in active">
-    <p><% if @upcoming_events.none? %>
-      <br>
-      <h3>No upcoming events! Click <%= link_to "here", event_index_path %>
-            to find an event to attend! Just imagine it's 1999 and party 
-            accordingly. Party on, Wayne/Garth.</h3>
-    <% else %>
-      <p><% @upcoming_events.pluck(:title, :id).each do |x, y| %>
-        <div class="well">
-          <b>Event: </b> <%= x %> <br>
-          <%= link_to "Click here for more details", event_path(y) %>
-        </div>
-      <% end %>
-    <% end %>       
-    </p>
-  </div>
-        
-  <div id="past_events" class="tab-pane fade">
-        <p><% @past_events.pluck(:title, :id).each do |x, y| %>
-          <div class="well">
-            <b>Event: </b> <%= x %>  <br>
-            <%= link_to "Click here for more details", event_path(y) %><br>
-          </div>
-       <% end %>
-        </p>
-  </div>
-    
-  <div id="hosted_events" class="tab-pane fade">
-    <% if @hosted_events.none? %>
-      <br>
-      <h3>No hosted events! Click <%= link_to "here", create_event_path %>
-            to create an event! You could be the host(ess) with the most(est).</h3>
-    <% else %>
-      <p><% @hosted_events.each do |x| %>
-        <div class="well">
-          <b>Event: </b><%= x.title %><br>
-          <%= link_to "Click here for more details", event_path(x.id) %>
-        </div>
-      <% end %>
-    <% end %>        
-      </p>
-  </div> 
   
-  <% if current_user.admin? && !current_user?(@user) %>
-      <%= link_to "Delete user", @user, method: :delete,
-                                  data: { confirm: "Are you sure you want to delete this user?" } %>
-  <% end %>
+      <ul class="nav nav-pills nav-justified">
+        <li class="active"><a data-toggle="tab" href="#upcoming_events">Upcoming 
+                                            events</a></li>
+          <li><a data-toggle="tab" href="#past_events">Past events</a></li>
+          <li><a data-toggle="tab" href="#hosted_events">Hosted events</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="upcoming_events" class="tab-pane fade in active">
+          <p>
+            <% if @upcoming_events.none? %><br>
+              <h3>No upcoming events! Click <%= link_to "here", event_index_path %>
+              to find an event to attend! Just imagine it's 1999 and party 
+              accordingly. Party on, Wayne/Garth.</h3>
+            <% else %>
+              <% @upcoming_events.pluck(:title, :id).each do |x, y| %>
+              <div class="well">
+                <b>Event: </b> <%= x %> <br>
+                  <%= link_to "Click here for more details", event_path(y) %>
+              </div>
+              <% end %>
+            <% end %>       
+          </p>
+      </div>
+        
+      <div id="past_events" class="tab-pane fade">
+        <p>
+          <% @past_events.pluck(:title, :id).each do |x, y| %>
+            <div class="well">
+              <b>Event: </b> <%= x %>  <br>
+              <%= link_to "Click here for more details", event_path(y) %><br>
+            </div>
+           <% end %>
+        </p>
+      </div>
     
+      <div id="hosted_events" class="tab-pane fade">
+        <% if @hosted_events.none? %><br>
+          <h3>No hosted events! Click <%= link_to "here", create_event_path %>
+              to create an event! You could be the host(ess) with the most(est).</h3>
+        <% else %>
+          <p>
+            <% @hosted_events.each do |x| %>
+              <div class="well">
+                <b>Event: </b><%= x.title %><br>
+                <%= link_to "Click here for more details", event_path(x.id) %>
+              </div>
+            <% end %>
+          </p>
+        <% end %>        
+      </div> 
+  
+      <% if current_user.admin? && !current_user?(@user) %>
+        <%= link_to "Delete user", @user, method: :delete,
+                                  data: { confirm: "Are you sure you want to delete this user?" } %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
   

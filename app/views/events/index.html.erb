@@ -1,55 +1,47 @@
 <% provide(:title, "Event list") %>
-
-<h1>Events</h1>
-
-<div class="col-md-6 col-md-offset-3">
-<ul class="nav nav-pills nav-justified">
-    <li class="active"><a data-toggle="tab" href="#upcoming_events">All upcoming events</a></li>
-    <li><a data-toggle="tab" href="#past_events">All past events</a></li>
-</ul>
-
-<div class="tab-content">
-    <div id="upcoming_events" class="tab-pane fade in active">
-        <p><% @events.upcoming_events.each do |x| %>
-          <div class="well">
-            <%= link_to "#{x.title}", event_path(x.id) %><br>
-            <%= "#{x.description}" %><br>
-            <i class="glyphicon glyphicon-calendar"></i>
-              <%= x.event_date.strftime('%A, %B %d, %Y') %><br>
-            <i class="glyphicon glyphicon-time"></i>    
-              <%=x.event_time.strftime('%I:%M%P') %><br>
-            <i class="glyphicon glyphicon-map-marker"></i>
-              <%= x.location %><br>
-            <small>Hosted by <%= link_to "#{x.host.name}", user_path(x.host.id) %></small>
-          </div>
-        <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+      <h1>Events</h1>
+        <ul class="nav nav-pills nav-justified">
+          <li class="active"><a data-toggle="tab" href="#upcoming_events">All upcoming events</a></li>
+          <li><a data-toggle="tab" href="#past_events">All past events</a></li>
+        </ul>
+      <div class="tab-content">
+        <div id="upcoming_events" class="tab-pane fade in active">
+          <p>
+            <% @events.upcoming_events.each do |x| %>
+              <div class="well">
+                <%= link_to "#{x.title}", event_path(x.id) %><br>
+                <%= "#{x.description}" %><br>
+                <i class="glyphicon glyphicon-calendar"></i>
+                <%= x.event_date.strftime('%A, %B %d, %Y') %><br>
+                <i class="glyphicon glyphicon-time"></i>    
+                <%=x.event_time.strftime('%I:%M%P') %><br>
+                <i class="glyphicon glyphicon-map-marker"></i>
+                <%= x.location %><br>
+                <small>Hosted by <%= link_to "#{x.host.name}", user_path(x.host.id) %></small>
+              </div>
+            <% end %>
         </p>
         <%= will_paginate @events.upcoming_events %>
-    </div>
-    <div id="past_events" class="tab-pane fade">
-        <p><% @events.past_events.each do |x| %>
-          <div class="well">
-            <%= link_to "#{x.title}", event_path(x.id) %><br>
-            <%= "#{x.description}" %><br>
-            <i class="glyphicon glyphicon-calendar"></i>
+      </div>
+      <div id="past_events" class="tab-pane fade">
+        <p>
+          <% @events.past_events.each do |x| %>
+            <div class="well">
+              <%= link_to "#{x.title}", event_path(x.id) %><br>
+              <%= "#{x.description}" %><br>
+              <i class="glyphicon glyphicon-calendar"></i>
               <%= x.event_date.strftime('%A, %B %d, %Y') %><br>
-            <i class="glyphicon glyphicon-map-marker"></i>
+              <i class="glyphicon glyphicon-map-marker"></i>
               <%= x.location %><br>
-            <i class="glyphicon glyphicon-ok"></i>
-               <small>This event has ended.</small>
-          </div>
-        <% end %>
+              <i class="glyphicon glyphicon-ok"></i>
+              <small>This event has ended.</small>
+            </div>
+          <% end %>
         </p>
-        <%= will_paginate @events.past_events %>
+      <%= will_paginate @events.past_events %>
     </div>
-    
+  </div>
 </div>
-
-
-
-</div>
-
-
-
-
-

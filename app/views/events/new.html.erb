@@ -1,30 +1,33 @@
 <% provide(:title, "Create an event") %>
 
-<h1>Create an Event</h1> 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+      <h1>Create an Event</h1> 
+      <div class="well">
+        <%= form_for(@event) do |f| %>
 
-<%= form_for(@event) do |f| %>
-  <div class="col-sm-4 col-sm-offset-4 well">
+          <%= render 'shared/event_error_messages' %>
 
-    <%= render 'shared/event_error_messages' %>
-
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control' %>
     
-    <%= f.label :description %>
-    <%= f.text_field :description, class: 'form-control' %>
+          <%= f.label :description %>
+          <%= f.text_field :description, class: 'form-control' %>
     
-    <%= f.label :location %>
-    <%= f.text_field :location, class: 'form-control' %>
+          <%= f.label :location %>
+          <%= f.text_field :location, class: 'form-control' %>
     
-    <%= f.label :event_date %>
-	  <%= f.date_field :event_date, class: 'form-control' %>
+          <%= f.label :event_date %>
+	        <%= f.date_field :event_date, class: 'form-control' %>
 	
-	  <%= f.label :event_time %>
-	  <%= f.time_field :event_time, class: 'form-control' %>
+	        <%= f.label :event_time %>
+	        <%= f.time_field :event_time, class: 'form-control' %>
     
-    
-    <%= f.submit "Create", class: "btn btn-primary" %>
-  
+          <%= f.submit "Create", class: "btn btn-primary" %>
+          
+        <% end %>
+      </div>
+    </div>
   </div>
-
-<% end %>
+</div>

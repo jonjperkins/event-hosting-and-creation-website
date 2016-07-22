@@ -1,31 +1,32 @@
 <% provide(:title, "Log in") %>
 
-<h1 id="login">Log in</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
 
-<%= form_for(:session, url: login_path) do |f| %>
-  <div class="col-sm-4 col-sm-offset-4 well">
+      <h1>Log in</h1>
+        <div class="well">
+          <%= form_for(:session, url: login_path) do |f| %>
 
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+            <%= f.label :email %>
+            <%= f.email_field :email %>
   
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+            <%= f.label :password %>
+            <%= f.password_field :password %>
   
-    <%= f.submit "Log in", class: "btn btn-primary" %>
+            <%= f.submit "Log in", class: "btn btn-primary" %>
   
-    <%= f.label :remember_me, class: "checkbox inline" do %>
+            <%= f.label :remember_me, class: "checkbox inline" do %><br>
   
-    <br>
-      <%= f.check_box :remember_me %>
-      <span>Remember me on this computer</span>
+            <%= f.check_box :remember_me %>
+            <span>Remember me on this computer</span>
   
-  <% end %>
+          <% end %>
+        </div>
+      <% end %>
 
-<% end %>
-
-
-<p id="new-user">New user? <%= link_to "Sign up now!", signup_path %></p>
-
+      <p id="new-user">New user? <%= link_to "Sign up now!", signup_path %></p>
+    </div>
   </div>
 </div>
 
