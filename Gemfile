@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'jquery-turbolinks'
+
 gem 'pg', '~> 0.18.2'
 gem 'rails',                   '4.2.2'
 gem 'bcrypt',                  '3.1.7'
@@ -18,7 +18,6 @@ gem 'jquery-rails',            '4.0.3'
 gem 'turbolinks',              '2.3.0'
 gem 'jbuilder',                '2.2.3'
 gem 'sdoc',                    '0.4.0', group: :doc
-
 
 group :development, :test do
   gem 'byebug',      '3.4.0'

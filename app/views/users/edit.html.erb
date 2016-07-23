@@ -6,30 +6,10 @@
       <h1>Account Settings</h1>
       <h2>Edit your information</h2>
       <div class="well">
-        <%= form_for(@user) do |f| %>
-  
-          <%= render 'shared/user_error_messages' %>
-
-          <%= f.label :name %>
-          <%= f.text_field :name, class: 'form-control' %>
-  
-          <%= f.label :email %>
-          <%= f.email_field :email, class: 'form-control' %>
-  
-          <%= f.label :password %>
-          <%= f.password_field :password, class: 'form-control' %>
-  
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
-  
-          <%= f.submit "Submit your changes", class: "btn btn-primary" %>
-
-        <% end %>
+        <%= render 'users/form' %>
       </div>
-
       <%= link_to "Delete your account", @user, method: :delete,
           data: { confirm: "Are you sure you want to delete your account? This cannot be undone." } %>
-
     </div>
   </div>
 </div>
