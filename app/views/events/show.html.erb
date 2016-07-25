@@ -12,11 +12,12 @@
           <h3><%= @event.host.name %></h3><br>
           <h4>Time and place:</h4>
           <h3><i class="glyphicon glyphicon-map-marker"></i>
-          <%= @event.location %></h3>
+          <%= @event.address %>
           <h3><i class="glyphicon glyphicon-calendar"></i>
           <%= @event.event_date.strftime('%A, %B %d, %Y') %>
           <%=@event.event_time.strftime('at %I:%M%P') %></h3><br>
 
+          </h4>
           <h4>Event guests:</h4>
           <% if @event.guests.any? %>
             <% @event.guests.each do |e| %>
@@ -26,7 +27,12 @@
           <% else %>
             <h3>None so far. Be the first and start the trend!</h3>
           <% end %><br>
-  
+          <% if @event.nearbys(50).any? %>
+            <h4>Nearby Events</h4>
+              <% @event.nearbys(50).each do |event| %>
+               <h5><%= link_to @event.title, event %> (<%= event.distance.round(2) %> miles from this event)</h5>
+              <% end %>
+          <% end %><br>
           <% if @event.event_date > Date.today %>
     
             <% if logged_in? && (current_user.id != @event.host.id) %>
@@ -56,7 +62,9 @@
             <div class="text-center">This event has ended.</div>
           <% end %>
         </div>
-      </div>
+        <div class="col-sm-12">
+          <img class="img-responsive center-block" <%= image_tag "http://maps.google.com/maps/api/staticmap?size=650x500&sensor=false&zoom=14&markers=#{@event.latitude}%2C#{@event.longitude}" %></img>
+        </div>
     </div>
   </div>
 </div>     

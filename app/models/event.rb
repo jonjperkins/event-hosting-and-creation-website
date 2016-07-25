@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+    geocoded_by :address
+    after_validation :geocode
     
     belongs_to :host, :class_name => "User"
     has_many :guests, :through => :invites, dependent: :destroy
@@ -9,7 +11,7 @@ class Event < ActiveRecord::Base
   
     validates :title, presence: true, length: { maximum: 40 }
     validates :description, presence: true, length: { maximum: 200 }
-    validates :location, presence: true, length: { maximum: 40 }
+    validates :address, presence: true
     validates :event_date, presence: true
     validates :event_time, presence: true
     validates :host_id, presence: true
