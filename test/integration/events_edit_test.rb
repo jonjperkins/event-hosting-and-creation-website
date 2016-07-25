@@ -30,14 +30,14 @@ class EventsEditTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'users/show'
     assert is_logged_in?
-    patch event_path(@event), event: { title: "Ghoulish Party", description: "Do not forget your costume!", location: "The Crypt",
+    patch event_path(@event), event: { title: "Ghoulish Party", description: "Do not forget your costume!", address: "The Crypt",
                                       event_date: "2015-04-22", event_time: "2015-04-22 09:40:38", host_id: "1" }
     assert_not flash.empty?
     assert_redirected_to @event
     @event.reload
     assert_equal "Ghoulish Party",  @event.title
     assert_equal "Do not forget your costume!", @event.description
-    assert_equal "The Crypt", @event.location
+    assert_equal "The Crypt", @event.address
   end
   
   

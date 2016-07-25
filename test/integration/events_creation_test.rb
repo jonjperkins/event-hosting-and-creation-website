@@ -36,7 +36,7 @@ class EventsCreationTest < ActionDispatch::IntegrationTest
     assert_difference 'Event.count', 1 do
     post_via_redirect events_path, event: { title: "Cool Times", 
                                            description: "A very cool time", 
-                                           location: "Cool place", 
+                                           address: "Cool place", 
                                            event_date: "2015-04-22", 
                                            event_time: "2015-04-22 09:40:38", 
                                            host_id: "1" }
