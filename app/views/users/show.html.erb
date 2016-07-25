@@ -6,7 +6,7 @@
       <% if @user.id == current_user.id %>
         <h1>Your events</h1>
         <% if current_user.events.count < 5 %>
-          <h2>You only need to host <%= 5 - (current_user.events.count) %> more events 
+          <h2>You only need to host <%= pluralize(5 - current_user.events.count, 'more event') %> 
                                            to become an all-star host!</h2>
         <% end %>
       <% else %>

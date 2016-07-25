@@ -19,7 +19,7 @@
                 <i class="glyphicon glyphicon-time"></i>    
                 <%=x.event_time.strftime('%I:%M%P') %><br>
                 <i class="glyphicon glyphicon-map-marker"></i>
-                <%= x.location %><br>
+                <%= x.address %><br>
                 <small>Hosted by <%= link_to "#{x.host.name}", user_path(x.host.id) %></small>
               </div>
             <% end %>
@@ -35,7 +35,7 @@
               <i class="glyphicon glyphicon-calendar"></i>
               <%= x.event_date.strftime('%A, %B %d, %Y') %><br>
               <i class="glyphicon glyphicon-map-marker"></i>
-              <%= x.location %><br>
+              <%= x.address %><br>
               <i class="glyphicon glyphicon-ok"></i>
               <small>This event has ended.</small>
             </div>
