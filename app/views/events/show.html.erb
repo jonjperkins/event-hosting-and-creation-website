@@ -66,11 +66,12 @@
             <% end %><br>
         </div>
         <div class="well">
-          <img class="img-responsive center-block" <%= image_tag "http://maps.google.com/maps/api/staticmap?size=650x500&sensor=false&zoom=14&markers=#{@event.latitude}%2C#{@event.longitude}" %></img>
+          <img class="img-responsive center-block" <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=650x500&zoom=15&markers=#{@event.latitude},#{@event.longitude}&zoom=12&size=400x400&key=#{Figaro.env.GOOGLE_API_KEY}" %> </img>
         </div>
     </div>
   </div>
 </div>     
+      
       
       
       
