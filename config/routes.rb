@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get     'create_event'  => 'events#new'
   post    'create_event'  => 'events#create'
   get     'event_index'   => 'events#index'
-  root                       'static_pages#home'
+  root                       'events#index'
   
  
   resources :users
