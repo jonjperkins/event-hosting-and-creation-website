@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy, :update, :edit, :show, :new]
+  before_action :logged_in_user, only: [:create, :destroy, :update, :edit, :new]
   before_action :correct_user, only: [:destroy, :update, :edit]
   
   
