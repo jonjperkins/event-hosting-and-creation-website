@@ -54,7 +54,6 @@ h2 {
 
 h3 {
   font-size: 1.15em;
-  letter-spacing: -1px;
   margin-bottom: 0px;
   text-align: center;
   font-weight: normal;
@@ -63,7 +62,6 @@ h3 {
 
 h4 {
   font-size: 1.2em;
-  letter-spacing: 0px;
   ;
   text-align: center;
   font-weight: normal;
@@ -72,7 +70,6 @@ h4 {
 
 h5 {
   font_size: 0.8em;
-  letter-spacing: -1px;
   margin-bottom: 0px;
   text-align: center;
   font-weight: normal;
@@ -87,13 +84,8 @@ p {
 /* header */
 
 #logo {
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: blue;
-  text-transform: uppercase;
-  letter-spacing: -1px; 
-  padding-top: 9px;
-  text-decoration: none;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 2em;
 }
 
 /* footer */
@@ -196,4 +188,24 @@ input {
 
 .map {
     margin: 0 auto;
+}
+
+.top-image {
+    position: relative;
+}
+
+.top-image-button {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 100%;
+}
+
+#the-image {
+  width: 100%;
+}
+
+#white {
+  color: white;
+  font-size: 1em;
 }

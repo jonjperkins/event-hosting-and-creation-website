@@ -1,9 +1,17 @@
-<% provide(:title, "Event list") %>
+<% provide(:title, "Events") %>
 <div class="container">
   <div class="row">
+    <div class="text-center top-image col-sm-12">
+      <img id="the-image" class="img-responsive" src="http://images.fineartamerica.com/images/artworkimages/mediumlarge/1/seattle-skyline-sebastian-schlueter-sibbiblue.jpg">
+      <div class="top-image-button">
+        <p id="white">Create and attend events</p>
+        <%= link_to "Get started", signup_path, class: "btn btn-primary" %>
+      </div>
+    </div> 
+  </div>
+  <div class="row">
     <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
-      <h1>Events</h1>
-        <ul class="nav nav-pills nav-justified">
+        <ul class="nav nav-pills nav-justified"><br>
           <li class="active"><a data-toggle="tab" href="#upcoming_events">All upcoming events</a></li>
           <li><a data-toggle="tab" href="#past_events">All past events</a></li>
         </ul>
