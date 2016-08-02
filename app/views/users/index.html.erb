@@ -6,14 +6,14 @@
       <h1>Users</h1>
       <%= will_paginate @users %>
       <% @users.each do |x| %>
-        <div class="well">
-          <h2><span id=logo><%= link_to "#{x.name}", user_path(x) %></span></h2>
+        <div class="event-boxes">
+          <p id="event-title"><%= link_to "#{x.name}", user_path(x) %>
+          <%="#{x.name}" %></p>
           <small>Member since <%= x.created_at.strftime('%B %d, %Y') %></small><br>
-          <small>Number of events <%= "#{x.name}" %> has created: <%= x.events.count %></small><br>
       
           <% if x.events.count >= 5 %>
             <span class = "glyphicon glyphicon-star-empty"></span>
-            <b><%= "#{x.name}" %> is an <em>ALL-STAR</em> host!</b>
+            <small><%= "#{x.name}" %> is an <em>ALL-STAR</em> host!</small>
           <% else %>
             <small><%= "#{x.name}" %> needs to create <%= 5 - (x.events.count) %> more events to become an all-star host.</small>
           <% end %>

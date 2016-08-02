@@ -24,7 +24,7 @@
               <div class="event-boxes">
                 <p id="event-title"><%= link_to "#{x.title}", event_path(x.id) %>
                 <%="#{x.title}" %></p>
-                <%= "#{x.description}" %><br>
+                <p><%= "#{x.description}" %></p>
                 <i class="glyphicon glyphicon-calendar"></i>
                 <%= x.event_date.strftime('%A, %B %d, %Y') %><br>
                 <i class="glyphicon glyphicon-time"></i>    
@@ -43,7 +43,7 @@
             <div class="event-boxes">
               <p id="event-title"><%= link_to "#{x.title}", event_path(x.id) %>
               <%="#{x.title}" %></p>
-              <%= "#{x.description}" %><br>
+              <p><%= "#{x.description}" %></p>
               <i class="glyphicon glyphicon-calendar"></i>
               <%= x.event_date.strftime('%A, %B %d, %Y') %><br>
               <i class="glyphicon glyphicon-map-marker"></i>

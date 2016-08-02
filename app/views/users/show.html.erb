@@ -61,9 +61,11 @@
         <% else %>
           <p>
             <% @hosted_events.each do |x| %>
-              <div class="well">
-                <b>Event: </b><%= x.title %><br>
-                <%= link_to "Click here for more details", event_path(x.id) %>
+              <div class="event-boxes">
+                <p id="event-title"><%= link_to "#{x.title}", event_path(x.id) %>
+                <%="#{x.title}" %></p>
+                <p><small><%= x.event_date.strftime('%A, %B %d, %Y') %> at
+                <%=x.event_time.strftime('%I:%M%P') %> </small></p>
               </div>
             <% end %>
           </p>

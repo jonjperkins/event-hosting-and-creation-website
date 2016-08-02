@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
       <h1><%= @event.title %></h1>
-        <div class="well">
+        <div class="event-boxes">
           <h4>Description:</h4>
           <h3><%= @event.description %></h3><br>
           <h4>Hosted by:</h4>
@@ -47,7 +47,7 @@
             <div class="text-center">This event has ended.</div>
           <% end %>
         </div>
-        <div class="well">
+        <div class="event-boxes">
           <h4>Nearby events:</h4>
             <% @event.nearbys(50).each do |event| %>
               <% if event.event_date > Date.today %>
@@ -57,7 +57,7 @@
               <% end %>
             <% end %><br>
         </div>
-        <div class="well">
+        <div class="event-boxes">
           <img class="img-responsive center-block" <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=650x500&zoom=15&markers=#{@event.latitude},#{@event.longitude}&zoom=12&size=400x400&key=#{Figaro.env.GOOGLE_API_KEY}" %> </img>
         </div>
     </div>
