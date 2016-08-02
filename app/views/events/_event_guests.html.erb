@@ -1,11 +1,12 @@
-<h4>Event guests:</h4>
+<br>
+<p id="event-title">Event guests:</p>
   <% if @event.guests.any? %>
     <% @event.guests.each do |e| %>
-      <h5><i class="glyphicon glyphicon-user"></i>
-      <%= e.name %></h5>
+      <p><i class="glyphicon glyphicon-user"></i>
+      <%= e.name %></p>
     <% end %>
   <% else %>
-    <h3>None so far. Be the first and start the trend!</h3>
+    <p>None so far. Be the first and start the trend!</p>
   <% end %><br>
 
     

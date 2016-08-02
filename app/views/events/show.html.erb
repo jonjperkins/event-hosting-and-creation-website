@@ -4,15 +4,15 @@
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
       <h1><%= @event.title %></h1>
-        <div class="event-boxes">
-          <h4>Description:</h4>
-          <h3><%= @event.description %></h3><br>
-          <h4>Hosted by:</h4>
-          <h3><%= @event.host.name %></h3><br>
-          <h4>Time and place:</h4>
-          <h3><i class="glyphicon glyphicon-map-marker"></i>
-          <%= @event.address %>
-          <h3><i class="glyphicon glyphicon-calendar"></i>
+        <div class="event-show-page">
+          <p id="event-title">Description:</p>
+          <p><%= @event.description %></p>
+          <p id="event-title">Hosted by:</p>
+          <p><%= @event.host.name %></p>
+          <p id="event-title">Time and place:</p>
+          <p><i class="glyphicon glyphicon-map-marker"></i>
+          <%= @event.address %></p>
+          <i class="glyphicon glyphicon-calendar"></i>
           <%= @event.event_date.strftime('%A, %B %d, %Y') %>
           <%=@event.event_time.strftime('at %I:%M%P') %></h3><br>
 
@@ -43,21 +43,22 @@
             <% end %>
   
           <% else %>
-            <div class="text-center"><i class="glyphicon glyphicon-ok"></i></div>
-            <div class="text-center">This event has ended.</div>
+            </br>
+            <p class="text-center"><i class="glyphicon glyphicon-ok"></i>
+            <p class="text-center" id="event-ended">This event has ended.</p>
           <% end %>
         </div>
-        <div class="event-boxes">
-          <h4>Nearby events:</h4>
+        <div class="event-show-page">
+          <p id="event-title">Nearby events:</p>
             <% @event.nearbys(50).each do |event| %>
               <% if event.event_date > Date.today %>
-                <h5><%= link_to event.title, event %> (<%= event.distance.round(2) %> miles from this event)</h5>
+                <%= link_to event.title, event %> (<%= event.distance.round(2) %> miles from this event)<br>
               <% else %>
-                <h3>No upcoming events nearby.</h3>
+                <p>No upcoming events nearby.</p>
               <% end %>
             <% end %><br>
         </div>
-        <div class="event-boxes">
+        <div class="event-show-page">
           <img class="img-responsive center-block" <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=650x500&zoom=15&markers=#{@event.latitude},#{@event.longitude}&zoom=12&size=400x400&key=#{Figaro.env.GOOGLE_API_KEY}" %> </img>
         </div>
     </div>

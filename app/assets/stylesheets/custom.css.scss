@@ -29,8 +29,6 @@ textarea {
   }
 }
 
-
-
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -193,7 +191,7 @@ input {
     margin: 0 auto;
 }
 
-/* events index */
+/* text on index page image */
 
 .top-image {
     position: relative;
@@ -209,6 +207,8 @@ input {
 #the-image {
   width: 100%;
 }
+
+/* event and user div boxes */
 
 #white {
   color: white;
@@ -244,4 +244,20 @@ input {
 #event-title {
   font-family: 'Alegreya Sans SC', sans-serif;
   font-size: 2em;
+}
+
+.event-show-page {
+  padding: 20px;
+  position: relative;
+  -moz-box-shadow: 0 0 5px #999;
+  -webkit-box-shadow: 0 0 5px #999;
+  box-shadow: 0 0 5px #999;
+  margin: 0px 10px 10px 0px;
+}
+
+#event-ended {
+  color: #F70E03;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
 }
