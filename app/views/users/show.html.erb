@@ -25,9 +25,9 @@
               accordingly. Party on, Wayne/Garth.</h3>
             <% else %>
               <% @upcoming_events.pluck(:title, :id).each do |x, y| %>
-              <div class="well">
-                <b>Event: </b> <%= x %> <br>
-                  <%= link_to "Click here for more details", event_path(y) %>
+              <div class="event-boxes">
+                <p id="event-title"><%= link_to "#{x}", event_path(y) %>
+                <%="#{x}" %></p>
               </div>
               <% end %>
             <% end %>       
@@ -37,10 +37,10 @@
       <div id="past_events" class="tab-pane fade">
         <p>
           <% @past_events.pluck(:title, :id).each do |x, y| %>
-            <div class="well">
-              <b>Event: </b> <%= x %>  <br>
-              <%= link_to "Click here for more details", event_path(y) %><br>
-            </div>
+            <div class="event-boxes">
+                <p id="event-title"><%= link_to "#{x}", event_path(y) %>
+                <%="#{x}" %></p>
+              </div>
            <% end %>
         </p>
       </div>
