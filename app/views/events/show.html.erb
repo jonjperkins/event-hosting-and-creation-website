@@ -53,8 +53,6 @@
             <% @event.nearbys(50).each do |event| %>
               <% if event.event_date > Date.today %>
                 <%= link_to event.title, event %> (<%= event.distance.round(2) %> miles from this event)<br>
-              <% else %>
-                <p>No upcoming events nearby.</p>
               <% end %>
             <% end %><br>
         </div>
